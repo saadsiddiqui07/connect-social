@@ -10,7 +10,7 @@ import { data } from "../../data/headerData";
 const Header = () => {
   const router = useRouter();
 
-  const user = null;
+  const user = "saa";
   return (
     <div className="flex shadow-lg sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
       <div className="w-full flex items-center">
@@ -42,13 +42,13 @@ const Header = () => {
         {user ? (
           <>
             <div className="flex ml-auto space-x-5 items-center">
-              <Avatar className="" />
-              <span className="hidden sm:inline-flex font-bold">
+              <Avatar className="hidden sm:inline-flex" />
+              <span className="hidden xl:inline-flex font-bold">
                 Saad Siddiqui
               </span>
             </div>
-            <div className="hidden sm:inline-flex  cursor-pointer rounded bg-black flex items-center p-2 ml-10">
-              <p className="text-white font-bold mr-1">Logout</p>
+            <div className="hidden md:inline-flex cursor-pointer rounded bg-black flex items-center p-2 ml-10">
+              <p className="hidden text-white font-bold mr-1">Logout</p>
               <ExitToAppIcon className="text-white" />
             </div>
           </>
