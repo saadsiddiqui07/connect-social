@@ -1,15 +1,24 @@
+import { useState } from "react";
 import { Avatar } from "@mui/material";
 
 const UploadContainer = () => {
+  const [input, setInput] = useState("");
+
   return (
-    <div className="">
-      <div className="">
-        <img
-          className="h-8 rounded-full mr-2"
+    <div className="hidden lg:inline-flex bg-yellow-300 w-full">
+      <div className="flex justify-between">
+        <Avatar
+          className="h-10 object-contain rounded-full mr-2"
           src="https://pbs.twimg.com/media/E4LlwA9X0AMFGun.png"
           alt="img"
         />
-        <input className="" placeholder="Share something to connect.." />
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className=""
+          placeholder="Share something to connect.."
+        />
+
         <button>Post It!</button>
       </div>
     </div>
