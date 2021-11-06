@@ -6,11 +6,28 @@ import HeaderIcon from "../../components/HeaderIcon/HeaderIcon";
 import { Avatar } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
 import { data } from "../../data/headerData";
+import { useStateValue } from "../../context-api/StateProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 const Header = () => {
+  const [{ user }, dispatch] = useStateValue();
   const router = useRouter();
 
-  const user = "saa";
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    // to let a user signOut
+    signOut(auth)
+      .then(() => {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+        console.log("User signed out successfully");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex shadow-lg sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
       <div className="w-full flex items-center">
@@ -43,11 +60,14 @@ const Header = () => {
           <>
             <div className="flex ml-auto space-x-5 items-center">
               <Avatar className="hidden sm:inline-flex" />
-              <span className="hidden xl:inline-flex font-bold">
+              <span className="hidden xl:inline-flex font-bold font-mono">
                 Saad Siddiqui
               </span>
             </div>
-            <div className="hidden md:inline-flex cursor-pointer rounded bg-black flex items-center p-2 ml-10">
+            <div
+              onClick={handleSignOut}
+              className="hidden md:inline-flex cursor-pointer rounded bg-black flex items-center p-2 ml-10"
+            >
               <p className="hidden text-white font-bold mr-1">Logout</p>
               <ExitToAppIcon className="text-white" />
             </div>
@@ -56,7 +76,7 @@ const Header = () => {
           <>
             <div
               onClick={() => router.push("/login")}
-              className="rounded bg-black flex items-center p-2 ml-auto"
+              className="rounded cursor-pointer bg-black flex items-center p-2 ml-auto"
             >
               <p className="hidden sm:inline-flex text-white font-bold mr-2">
                 Login
