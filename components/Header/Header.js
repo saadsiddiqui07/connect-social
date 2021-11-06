@@ -23,13 +23,14 @@ const Header = () => {
           type: "SET_USER",
           user: null,
         });
+        router.push("/login");
         console.log("User signed out successfully");
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div className="flex shadow-lg sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
+    <div className="flex shadow-lg top-0 z-50 sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
       <div className="w-full flex items-center">
         <Image
           src={logo}
