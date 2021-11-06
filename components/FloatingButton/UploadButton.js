@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Avatar, Fab, Box, Modal, Button } from "@mui/material";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import VideoCameraBackIcon from "@mui/icons-material/VideoCameraBack";
+import CreateIcon from "@mui/icons-material/Create";
 
 const style = {
   position: "absolute",
@@ -48,8 +49,9 @@ const UploadButton = () => {
             <button
               onClick={handleUpload}
               disabled={!input}
-              className="bg-black text-white border-none text-sm rounded px-2 py-1 font-bold"
+              className="flex bg-black text-white items-center border-none text-sm rounded px-2 py-1 font-bold"
             >
+              <CreateIcon fontSize="small" className="mr-1" />
               Post It!
             </button>
           </div>
@@ -62,7 +64,7 @@ const UploadButton = () => {
             </Button>
             <Button className="flex shadow-md items-center px-3 py-2 bg-blue-400 cursor-pointer">
               <VideoCameraBackIcon className="text-white" />
-              <p className="font-bold text-md text-white ml-2 tracking-wider capitalize hover:border-black">
+              <p className="font-bold text-md text-white ml-2 tracking-wider capitalize ">
                 Video
               </p>
             </Button>
