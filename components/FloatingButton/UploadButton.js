@@ -72,7 +72,7 @@ const UploadButton = () => {
         </Box>
       </Modal>
       <Box
-        className="absolute right-0 bottom-1 z-50"
+        className="fixed right-0 bottom-1 z-50"
         sx={{ "& > :not(style)": { m: 1 } }}
       >
         <Fab color="primary" onClick={handleModalOpen}>
