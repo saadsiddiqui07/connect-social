@@ -60,9 +60,9 @@ const Header = () => {
         {user ? (
           <>
             <div className="flex ml-auto space-x-5 items-center">
-              <Avatar className="hidden sm:inline-flex" />
+              <Avatar src={user?.photoURL} className="hidden sm:inline-flex" />
               <span className="hidden xl:inline-flex font-bold font-mono">
-                Saad Siddiqui
+                {user?.displayName}
               </span>
             </div>
             <div
