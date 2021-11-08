@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .icons_container {
+    @apply flex items-center  p-2 my-2 cursor-pointer rounded hover:bg-gray-100 transition;
+  }
+
+  .icons_container > p {
+    @apply font-sans text-gray-700 font-bold ml-1;
+  }
+
+  .posts__container {
+    @apply overflow-y-scroll  scrollbar-hide h-96 mt-5;
+  }
+
+  .posts_containerSm {
+    @apply overflow-y-scroll  scrollbar-hide h-screen mt-5;
+  }
+}
+
+@layer utilities {
+  .posts__container {
+    scroll-snap-type: y;
+  }
+}
