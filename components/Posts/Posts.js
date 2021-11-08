@@ -8,15 +8,16 @@ const Posts = () => {
 
   useEffect(() => {
     // fetching posts from the database
-    () =>
-      onSnapshot(
-        query(collection(db, "posts"), orderBy("timestamp", "desc")),
-        (snapshot) => {
-          setPosts(snapshot.docs);
-        }
-      );
+    const unsubscribe = onSnapshot(
+      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setPosts(snapshot.docs);
+      }
+    );
+    return unsubscribe;
   }, [db]);
   console.log(posts);
+
   return (
     <div className=" w-full flex-col justify items-center mt-8">
       {posts.map((post) => (
