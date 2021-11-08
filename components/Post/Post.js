@@ -6,7 +6,13 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useStateValue } from "../../context-api/StateProvider";
+import { useState } from "react";
+import { CardActions } from "@mui/material";
 
 export default function Post({
   username,
@@ -16,17 +22,24 @@ export default function Post({
   timestamp,
   image,
 }) {
+  const [{ user }] = useStateValue();
+  const [isLiked, setIsLiked] = useState(false);
+
+  const deletePost = async () => {};
+
+  const showDeleteIcon = user?.displayName === username;
+
   return (
     <Card className="m-5 w-4/5 ml-auto mr-auto">
       <CardHeader
         avatar={<Avatar src={profileImg} sx={{ bgcolor: red[500] }} />}
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            {showDeleteIcon && <DeleteForeverIcon />}
           </IconButton>
         }
         title={username}
-        subheader="September 14, 2016"
+        subheader={new Date(timestamp?.toDate()).toUTCString()}
       />
       <CardMedia
         className="object-contain h-60"
@@ -37,11 +50,21 @@ export default function Post({
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {caption}
         </Typography>
       </CardContent>
+      <CardActions>
+        <IconButton onClick={() => setIsLiked(!isLiked)}>
+          {!isLiked ? (
+            <FavoriteBorderIcon />
+          ) : (
+            <FavoriteIcon className="text-blue-600" />
+          )}
+        </IconButton>
+        <IconButton>
+          <ChatBubbleOutlineIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 }
