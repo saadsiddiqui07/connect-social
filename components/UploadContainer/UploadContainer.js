@@ -64,7 +64,7 @@ const UploadContainer = () => {
       <div className="flex w-full p-2 mt-2">
         <Avatar
           className="h-10 object-contain rounded-full mr-2"
-          src="https://pbs.twimg.com/media/E4LlwA9X0AMFGun.png"
+          src={user?.photoURL}
           alt="img"
         />
         <input
