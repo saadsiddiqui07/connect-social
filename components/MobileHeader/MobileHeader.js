@@ -4,9 +4,13 @@ import StickyNote2SharpIcon from "@mui/icons-material/StickyNote2Sharp";
 import StorefrontSharpIcon from "@mui/icons-material/StorefrontSharp";
 import NotificationsActiveRoundedIcon from "@mui/icons-material/NotificationsActiveRounded";
 import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
+import { useStateValue } from "../../context-api/StateProvider";
+import { useState } from "react";
 
 const MobileHeader = () => {
+  const [{ cart }] = useStateValue();
   const router = useRouter();
+
   return (
     <div className="flex shadow-md sticky top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
       <div className="flex w-full justify-center flex-grow ">
