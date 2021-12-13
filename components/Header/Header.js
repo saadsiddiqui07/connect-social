@@ -3,15 +3,15 @@ import logo from "../../assets/connect-logo.png";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import HeaderIcon from "../../components/HeaderIcon/HeaderIcon";
-import {Avatar} from "@mui/material";
-import {useRouter} from "next/dist/client/router";
-import {data} from "../../data/headerData";
-import {useStateValue} from "../../context-api/StateProvider";
-import {signOut} from "firebase/auth";
-import {auth} from "../../firebase/firebase";
+import { Avatar } from "@mui/material";
+import { useRouter } from "next/dist/client/router";
+import { data } from "../../data/headerData";
+import { useStateValue } from "../../context-api/StateProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 const Header = () => {
-  const [{user, cart}, dispatch] = useStateValue();
+  const [{ user, cart }, dispatch] = useStateValue();
   const router = useRouter();
 
   const handleSignOut = (e) => {
@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-full  shadow-lg top-0 z-50 sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
+    <div className="flex w-full shadow-lg top-0 sticky md:top-0 z-50 border-b-2 bg-white items-center pl-5 pr-5 pt-2 pb-2">
       <div className="w-full flex items-center">
         <Image
           src={logo}
@@ -74,18 +74,18 @@ const Header = () => {
             </div>
           </>
         ) : (
-            <>
-              <div
-                onClick={() => router.push("/login")}
-                className="hidden: sm:inline-flex rounded cursor-pointer bg-black flex items-center p-2 ml-auto"
-              >
-                <p className="hidden sm:inline-flex text-white font-bold mr-2">
-                  Login
+          <>
+            <div
+              onClick={() => router.push("/login")}
+              className="hidden: sm:inline-flex rounded cursor-pointer bg-black flex items-center p-2 ml-auto"
+            >
+              <p className="hidden sm:inline-flex text-white font-bold mr-2">
+                Login
               </p>
-                <ExitToAppIcon className="text-white" />
-              </div>
-            </>
-          )}
+              <ExitToAppIcon className="text-white" />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

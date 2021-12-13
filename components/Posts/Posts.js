@@ -14,6 +14,7 @@ const Posts = () => {
         setPosts(snapshot.docs);
       }
     );
+    // clean up action
     return unsubscribe;
   }, [db]);
   console.log(posts);

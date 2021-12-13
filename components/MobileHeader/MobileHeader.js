@@ -2,10 +2,8 @@ import { useRouter } from "next/router";
 import HomeSharpIcon from "@mui/icons-material/HomeSharp";
 import StickyNote2SharpIcon from "@mui/icons-material/StickyNote2Sharp";
 import StorefrontSharpIcon from "@mui/icons-material/StorefrontSharp";
-import NotificationsActiveRoundedIcon from "@mui/icons-material/NotificationsActiveRounded";
 import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
 import { useStateValue } from "../../context-api/StateProvider";
-import { useState } from "react";
 
 const MobileHeader = () => {
   const [{ cart }] = useStateValue();

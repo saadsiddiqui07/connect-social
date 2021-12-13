@@ -1,5 +1,5 @@
 import faker from "faker";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import SidebarOptions from "../SidebarOptions/SidebarOptions";
 
 const Sidebar = () => {

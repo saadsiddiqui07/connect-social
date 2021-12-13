@@ -7,7 +7,7 @@ const SidebarOptions = ({ name, profilePic }) => {
     cursor-pointer transition duration-100 transform hover:bg-gray-200 hover:scale-110 "
     >
       <Avatar src={profilePic} />
-      <div className="hidden xl:inline-flex">
+      <div className="hidden lg:inline-flex">
         <p className="text-xs font-bold text-gray-500 ml-3">{name}</p>
       </div>
     </div>
