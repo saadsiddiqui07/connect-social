@@ -4,12 +4,10 @@ import {
   CardActionArea,
   CardActions,
   Typography,
-  CardMedia,
   CardContent,
   Card,
 } from "@mui/material";
-import { red } from "@mui/material/colors";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Image from "next/image";
 
 export default function NewsCard({
   author,
@@ -19,18 +17,14 @@ export default function NewsCard({
   source,
   image,
 }) {
-  if (author === null) return null;
+  if (!author) return null;
   return (
     <Card className="m-8 lg:m-10 shadow-lg">
       <p className="py-1 px-2 font-semibold text-gray-700 font-mono">
         Source: {source.name}
       </p>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          className="h-30 object-cover w-full"
-          image={image}
-        />
+        <img className="h-20 object-contain w-full" src={image} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
