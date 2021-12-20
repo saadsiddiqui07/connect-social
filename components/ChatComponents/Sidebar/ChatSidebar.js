@@ -33,7 +33,7 @@ const ChatSidebar = () => {
   };
 
   return (
-    <div className="flex flex-col bg-white h-full w-4/12">
+    <div className="flex flex-col bg-gray-50 h-full w-4/12">
       <Modal className="w-full" open={open} onClose={() => setOpen(false)}>
         <Box sx={style}>
           <h4 className="text-center font-sans">Start a conversation</h4>
@@ -64,7 +64,9 @@ const ChatSidebar = () => {
         </Box>
       </Modal>
       <div className="py-2 px-3 flex justify-between items-center bottom-3 border-b-2 border-gray-200">
-        <p className="text-md font-bold font-mono">Your Chats</p>
+        <p className="text-md font-bold font-mono">
+          {user?.displayName?.toLowerCase()}
+        </p>
         <MoreVertIcon />
       </div>
       <button
