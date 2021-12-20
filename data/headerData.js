@@ -3,6 +3,7 @@ import StickyNote2SharpIcon from "@mui/icons-material/StickyNote2Sharp";
 import StorefrontSharpIcon from "@mui/icons-material/StorefrontSharp";
 import NotificationsActiveRoundedIcon from "@mui/icons-material/NotificationsActiveRounded";
 import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
+import MovieIcon from "@mui/icons-material/Movie";
 
 export const data = [
   {
@@ -24,5 +25,10 @@ export const data = [
     id: 4,
     title: "messages",
     Icon: ForumRoundedIcon,
+  },
+  {
+    id: 5,
+    title: "movies",
+    Icon: MovieIcon,
   },
 ];
