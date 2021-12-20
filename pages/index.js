@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import MobileHeader from "../components/MobileHeader/MobileHeader";
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
+import SidebarAds from "../components/SidebarAds/SidebarAds";
 import Feed from "../components/Feed/Feed";
 import UploadButton from "../components/FloatingButton/UploadButton";
 import { useStateValue } from "../context-api/StateProvider";
@@ -28,7 +29,7 @@ export default function Home() {
     return () => {
       unsubscribe();
     };
-  }, [dispatch]);
+  }, []);
 
   // redirect to login page
   if (!user) return <Login />;
@@ -45,10 +46,10 @@ export default function Home() {
         <div className="sm:hidden">
           <MobileHeader />
         </div>
-        <div className="lg:flex  items-center justify-between mt-8 ml-5 mr-5">
+        <div className="max-w-[1450px] ml-auto mr-auto  lg:flex  items-center justify-between mt-8 ">
           <Sidebar />
           <Feed />
-          <Sidebar />
+          <SidebarAds />
         </div>
         <UploadButton />
       </main>

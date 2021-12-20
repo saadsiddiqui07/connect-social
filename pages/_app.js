@@ -1,22 +1,12 @@
 import "../styles/globals.css";
-import { motion } from "framer-motion";
+import reducer, { initialState } from "../context-api/reducer";
+import { StateProvider } from "../context-api/StateProvider";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={{
-        initial: {
-          opacity: 0,
-        },
-        animate: {
-          opacity: 1,
-        },
-      }}
-    >
+    <StateProvider initialState={initialState} reducer={reducer}>
       <Component {...pageProps} />
-    </motion.div>
+    </StateProvider>
   );
 }
 

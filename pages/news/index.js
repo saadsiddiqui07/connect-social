@@ -5,8 +5,7 @@ import NewsCard from "../../components/NewsCard/NewsCard";
 
 const API_KEY = process.env.NEWS_APIKEY;
 
-const News = ({results}) => {
-  console.log(results);
+const News = ({ results }) => {
   return (
     <div>
       <Head>
@@ -17,14 +16,19 @@ const News = ({results}) => {
       <div className="sm:hidden">
         <MobileHeader />
       </div>
-      <div className="px-5 bg-blue-400 center-center justify-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
+      <div className="px-5 bg-gray-100 center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
         {results.map((result) => (
           <NewsCard
+            id={result.id}
+            key={result.id}
             author={result.author}
             title={result.title}
             content={result.content}
+            description={result.description}
             date={result.publishedAt}
             image={result.urlToImage}
+            url={result.url}
+            source={result.source}
           />
         ))}
       </div>
@@ -36,7 +40,7 @@ export default News;
 
 export const getServerSideProps = async () => {
   const results = await fetch(
-    `https://newsapi.org/v2/everything?q=apple&from=2021-10-26&to=2021-10-26&sortBy=popularity&apiKey=${API_KEY}`
+    `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`
   )
     .then((data) => data.json())
     .catch((err) => console.log(err.message));
