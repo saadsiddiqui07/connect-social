@@ -11,7 +11,7 @@ const Chat = () => {
   let message = "Heyy i am using connect message and also testing a function";
 
   const handleOpenChat = () => {
-    router.push(`/chat/1`);
+    router.push(`/messages/1`);
   };
 
   return (
