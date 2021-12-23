@@ -22,6 +22,8 @@ const ChatSidebar = () => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
 
+  let username = user?.displayName.split(" ").join("").toLowerCase();
+
   const handleModalOpen = () => {
     setOpen(true);
   };
@@ -64,9 +66,7 @@ const ChatSidebar = () => {
         </Box>
       </Modal>
       <div className="py-2 px-3 flex justify-between items-center bottom-3 border-b-2 border-gray-200">
-        <p className="text-md font-bold font-mono">
-          {user?.displayName?.toLowerCase()}
-        </p>
+        <p className="text-md font-bold font-mono">{username}</p>
         <MoreVertIcon />
       </div>
       <button
