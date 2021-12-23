@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../../components/Header/Header";
 import MobileHeader from "../../components/MobileHeader/MobileHeader";
 import MovieRow from "../../components/MovieRow/MovieRow";
+import MovieBanner from "../../components/MovieBanner/MovieBanner";
 import requests from "../../utils/requests";
 
 const Movies = () => {
@@ -15,7 +16,8 @@ const Movies = () => {
       <div className="sm:hidden">
         <MobileHeader />
       </div>
-      <div className="px-5 h-full bg-white center-center justify-center">
+      <MovieBanner />
+      <div className="px-5 w-[100%] h-full bg-white center-center justify-center">
         <MovieRow
           title="NETFLIX ORIGINALS"
           fetchUrl={requests.fetchNetflixOriginals}
