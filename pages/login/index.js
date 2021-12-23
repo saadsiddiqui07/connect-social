@@ -1,22 +1,19 @@
+import * as React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { auth, provider } from "../../firebase/firebase";
 import { useStateValue } from "../../context-api/StateProvider";
 import GoogleIcon from "@mui/icons-material/Google";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import * as React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import logo from "../../assets/connect-logo.png";
 
 function Copyright(props) {
   return (
@@ -77,8 +74,10 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Login</title>
+      </Head>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -87,9 +86,14 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Image
+            src={logo}
+            height={50}
+            width={50}
+            layout="fixed"
+            objectFit="contain"
+            className="cursor-pointer"
+          />
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -109,44 +113,29 @@ export default function SignIn() {
             <TextField
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              margin="normal"
               required
               fullWidth
               name="password"
               label="Password"
               type="password"
-              id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
             />
             <Button
               onClick={handleEmailSignIn}
               type="submit"
               fullWidth
-              variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              className="bg-black text-white font-bold border-2 hover:text-black"
             >
               Sign In
             </Button>
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Already have an account? Login
-            </Button>
-            <CssBaseline />
+            <hr />
+            <p className="text-center my-2 text-gray-600 ">OR</p>
             <Button
               type="submit"
               onClick={handleSignIn}
               fullWidth
-              variant="outlined"
-              sx={{ mt: 3, mb: 2 }}
+              className="bg-black text-white font-bold hover:bg-blue-500"
             >
               Sign In With Google <GoogleIcon className="text-lg ml-2" />
             </Button>
