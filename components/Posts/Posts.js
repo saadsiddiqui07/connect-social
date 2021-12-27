@@ -17,7 +17,6 @@ const Posts = () => {
     // clean up action
     return unsubscribe;
   }, [db]);
-  console.log(posts);
 
   return (
     <div className=" w-full flex-col justify items-center mt-8">
