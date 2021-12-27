@@ -48,7 +48,7 @@ export default function Post({
       (snapshot) => setComments(snapshot.docs)
     );
     return unsubscribe;
-  }, [db]);
+  }, [id]);
 
   // add a comment to a new post
   const commentOnPost = async (e) => {
@@ -94,8 +94,14 @@ export default function Post({
         />
       )}
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          <p>{username}</p>
+        <Typography
+          className="flex text-black"
+          variant="body2"
+          color="text.secondary"
+        >
+          <p className="font-bold text-black mr-2">
+            {username.split(" ").join("").toLowerCase()}
+          </p>
           {caption}
         </Typography>
       </CardContent>
