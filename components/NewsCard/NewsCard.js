@@ -7,7 +7,6 @@ import {
   CardContent,
   Card,
 } from "@mui/material";
-import Image from "next/image";
 
 export default function NewsCard({
   author,
