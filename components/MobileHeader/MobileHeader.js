@@ -3,6 +3,7 @@ import HomeSharpIcon from "@mui/icons-material/HomeSharp";
 import StickyNote2SharpIcon from "@mui/icons-material/StickyNote2Sharp";
 import StorefrontSharpIcon from "@mui/icons-material/StorefrontSharp";
 import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
+import MovieIcon from "@mui/icons-material/Movie";
 import { useStateValue } from "../../context-api/StateProvider";
 
 const MobileHeader = () => {
@@ -24,6 +25,9 @@ const MobileHeader = () => {
           </div>
           <div onClick={() => router.push("/messages")}>
             <ForumRoundedIcon fontSize="large" />
+          </div>
+          <div onClick={() => router.push("/movies")}>
+            <MovieIcon fontSize="large" />
           </div>
         </div>
       </div>
