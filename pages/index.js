@@ -14,7 +14,7 @@ import Login from "../pages/login/index";
 // sm:bg-red-100 md:bg-green-100 lg:bg-blue-200 xl:bg-orange-300
 export default function Home() {
   const [{ user }, dispatch] = useStateValue();
-
+  // check if the user is logged in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -29,7 +29,7 @@ export default function Home() {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [dispatch]);
 
   // redirect to login page
   if (!user) return <Login />;

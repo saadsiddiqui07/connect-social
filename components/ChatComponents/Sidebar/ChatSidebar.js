@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal, Box, Avatar, Button } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useStateValue } from "../../../context-api/StateProvider";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  orderBy,
+} from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
 import Chat from "../Chat/Chat";
 
 const style = {
@@ -21,15 +30,28 @@ const ChatSidebar = () => {
   const [{ user }] = useStateValue();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [chats, setChats] = useState([]);
 
   let username = user?.displayName.split(" ").join("").toLowerCase();
 
-  const handleModalOpen = () => {
-    setOpen(true);
-  };
+  // fetch chatRooms from firebase firestore
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      query(collection(db, "chatRooms"), orderBy("timestamp", "asc")),
+      (snapshot) => setChats(snapshot.docs)
+    );
+    // trigger and unmount function
+    return unsubscribe;
+  }, []);
 
-  const handleNewChat = (e) => {
+  const handleNewChat = async (e) => {
     e.preventDefault();
+    // add a new chat room into firebase firestore
+    await addDoc(collection(db, "chatRooms"), {
+      name: input,
+      createdBy: user?.email,
+      timestamp: serverTimestamp(),
+    });
     setOpen(false);
     setInput("");
   };
@@ -70,16 +92,15 @@ const ChatSidebar = () => {
         <MoreVertIcon />
       </div>
       <button
-        onClick={handleModalOpen}
+        onClick={() => setOpen(true)}
         className="bg-black font-extrabold text-white my-2 mx-5 p-2 hover:text-blue-500 "
       >
         Connect via Messages...
       </button>
       <div className="">
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
+        {chats.map((chat) => (
+          <Chat key={chat.id} id={chat.id} chatName={chat.data().name} />
+        ))}
       </div>
     </div>
   );
