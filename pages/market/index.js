@@ -57,8 +57,8 @@ const MarketPlace = ({ products }) => {
             />
           ))}
         </div>
-        <div className="p-3">
-          <div className="flex items-center px-3  w-full border-b-2 border-gray-300">
+        <div className="w-[80%] h-[550px] overflow-y-scroll scrollbar-hidden flex-col">
+          <div className="flex items-center px-3 border-b-2 border-gray-300">
             <h3 className="font-extrabold font-mono text-md md:text-lg">
               Your cart
             </h3>
@@ -68,7 +68,7 @@ const MarketPlace = ({ products }) => {
               </StyledBadge>
             </IconButton>
           </div>
-          <div className="hidden lg:inline-flex flex flex-col ml-20 ">
+          <div className="hidden lg:inline-flex justify-center items-center flex-col">
             {cart?.length > 0 && <Subtotal />}
             {cart?.map((product) => (
               <CheckoutProduct
