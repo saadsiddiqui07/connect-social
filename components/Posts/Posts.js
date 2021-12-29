@@ -16,14 +16,14 @@ const Posts = () => {
     );
     // clean up action
     return unsubscribe;
-  }, [db]);
+  }, []);
 
   return (
     <div className=" w-full flex-col justify items-center mt-8">
       {posts.map((post) => (
         <Post
-          id={post.id}
           key={post.id}
+          id={post.id}
           username={post.data().username}
           image={post.data().image}
           caption={post.data().caption}
