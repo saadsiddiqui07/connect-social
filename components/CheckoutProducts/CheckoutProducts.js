@@ -15,9 +15,9 @@ const CheckoutProduct = ({ id, title, price, rating, image, category }) => {
   };
 
   return (
-    <Card className="m-8 shadow-lg flex flex-col w-full mr-20 cursor-pointer">
+    <Card className="m-8 shadow-lg flex flex-col w-full cursor-pointer">
       <div className="p-2">
-        <div className="flex  py-1 justify-between items-center">
+        <div className="flex py-1 justify-between items-center">
           <p className="text-sm capitalize font-extrabold">{category}</p>
         </div>
         <p className="text-sm">{title}</p>
