@@ -18,7 +18,6 @@ export default function Home() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
-        console.log(authUser);
         dispatch({
           type: "SET_USER",
           user: authUser,
