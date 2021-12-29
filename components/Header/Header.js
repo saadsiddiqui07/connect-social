@@ -35,6 +35,7 @@ const Header = () => {
         <Image
           src={logo}
           height={50}
+          alt=""
           width={50}
           layout="fixed"
           objectFit="contain"
