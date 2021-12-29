@@ -80,6 +80,7 @@ const UploadContainer = () => {
           onChange={addImageToPost}
         />
         <button
+          disabled={!selectedFile}
           onClick={handleImageUpload}
           className="bg-black text-white px-1 text-xs rounded font-bold font-mono"
         >
