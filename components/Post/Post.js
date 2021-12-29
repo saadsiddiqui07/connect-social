@@ -99,9 +99,9 @@ export default function Post({
           variant="body2"
           color="text.secondary"
         >
-          <p className="font-bold text-black mr-2">
+          <Typography className="font-bold text-black mr-2">
             {username.split(" ").join("").toLowerCase()}
-          </p>
+          </Typography>
           {caption}
         </Typography>
       </CardContent>
