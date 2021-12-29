@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import { useStateValue } from "../../context-api/StateProvider";
 
-const Message = ({ sender }) => {
+const Message = ({ sender, message }) => {
   const [{ user }] = useStateValue();
 
   return (
