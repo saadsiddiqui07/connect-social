@@ -4,10 +4,8 @@ import { getCartTotal } from "../../context-api/reducer";
 const Subtotal = () => {
   const [{ cart }] = useStateValue();
 
-  const createCheckoutSession = async () => {};
-
   return (
-    <div className="bg-black text-white w-full mt-3">
+    <div className="bg-gray-500 shadow-lg text-white w-full my-3">
       {cart?.length > 0 && (
         <>
           <div className="flex items-center justify-between px-3 py-2">
