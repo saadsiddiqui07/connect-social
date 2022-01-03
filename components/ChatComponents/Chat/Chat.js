@@ -1,18 +1,35 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Avatar } from "@mui/material";
 import { useStateValue } from "../../../context-api/StateProvider";
 import { truncateText } from "../../../utils/truncateText";
+import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
 
 const Chat = ({ id, chatName }) => {
+  const [lastMessage, setLastMessage] = useState([]);
   const [{ user }] = useStateValue();
   const router = useRouter();
 
-  let message = "Heyy i am using connect message and also testing a function";
-
+  // redirect to a chat Room
   const handleOpenChat = () => {
     router.push(`/messages/${id}`);
   };
+
+  // fetch last message of every chat
+  useEffect(() => {
+    if (id) {
+      onSnapshot(
+        query(
+          collection(db, "chatRooms", id, "messages"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => {
+          setLastMessage(snapshot.docs);
+        }
+      );
+    }
+  }, [id]);
 
   return (
     <div
@@ -23,7 +40,9 @@ const Chat = ({ id, chatName }) => {
       <Avatar className="h-9 w-9" src={user?.photoURL} />
       <div className="ml-3">
         <h4 className="font-bold text-sm text-black">{chatName}</h4>
-        <p className="text-xs text-black">{truncateText(message, 42)}</p>
+        <p className="text-xs text-black">
+          {truncateText(lastMessage[0]?.data().message, 42)}
+        </p>
       </div>
     </div>
   );
