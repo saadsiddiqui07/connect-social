@@ -30,7 +30,7 @@ const ChatSidebar = () => {
   const [{ user }] = useStateValue();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [chats, setChats] = useState([]);
+  const [chatRooms, setChatRooms] = useState([]);
 
   let username = user?.displayName.split(" ").join("").toLowerCase();
 
@@ -39,7 +39,7 @@ const ChatSidebar = () => {
     const unsubscribe = onSnapshot(
       query(collection(db, "chatRooms"), orderBy("timestamp", "asc")),
       (snapshot) => {
-        setChats(snapshot.docs);
+        setChatRooms(snapshot.docs);
       }
     );
     // trigger and unmount function
@@ -101,7 +101,7 @@ const ChatSidebar = () => {
         Connect via Messages...
       </button>
       <div className="">
-        {chats.map((chat) => (
+        {chatRooms.map((chat) => (
           <Chat key={chat.id} id={chat.id} chatName={chat.data().name} />
         ))}
       </div>
