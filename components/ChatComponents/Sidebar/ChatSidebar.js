@@ -38,12 +38,15 @@ const ChatSidebar = () => {
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(collection(db, "chatRooms"), orderBy("timestamp", "asc")),
-      (snapshot) => setChats(snapshot.docs)
+      (snapshot) => {
+        setChats(snapshot.docs);
+      }
     );
     // trigger and unmount function
     return unsubscribe;
   }, []);
 
+  // create a new chat room
   const handleNewChat = async (e) => {
     e.preventDefault();
     // add a new chat room into firebase firestore
