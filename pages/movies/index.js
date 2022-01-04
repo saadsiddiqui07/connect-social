@@ -17,7 +17,7 @@ const Movies = () => {
         <MobileHeader />
       </div>
       <MovieBanner />
-      <div className="px-5 w-[100%] h-full bg-white center-center justify-center">
+      <div className="px-5">
         <MovieRow
           title="NETFLIX ORIGINALS"
           fetchUrl={requests.fetchNetflixOriginals}
