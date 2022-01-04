@@ -6,7 +6,7 @@ import { truncateText } from "../../../utils/truncateText";
 import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
-const Chat = ({ id, chatName }) => {
+const Chat = ({ id, chatName, image }) => {
   const [lastMessage, setLastMessage] = useState([]);
   const [{ user }] = useStateValue();
   const router = useRouter();
@@ -37,7 +37,7 @@ const Chat = ({ id, chatName }) => {
       onClick={handleOpenChat}
       className="flex cursor-pointer items-center px-2 py-2 border-b-[1px] border-gray-400 hover:bg-gray-200 text-white transition-opacity "
     >
-      <Avatar className="h-9 w-9" src={user?.photoURL} />
+      <Avatar className="h-9 w-9" src={image} />
       <div className="ml-3">
         <h4 className="font-bold text-sm text-black">{chatName}</h4>
         <p className="text-xs text-black">
