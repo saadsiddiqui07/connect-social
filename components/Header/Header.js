@@ -1,5 +1,4 @@
 import Image from "next/image";
-import logo from "../../assets/connect-logo.png";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import HeaderIcon from "../../components/HeaderIcon/HeaderIcon";
@@ -9,11 +8,13 @@ import { data } from "../../data/headerData";
 import { useStateValue } from "../../context-api/StateProvider";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import logo from "../../assets/connect-logo.png";
 
 const Header = () => {
   const [{ user }, dispatch] = useStateValue();
   const router = useRouter();
-
+  
+  // handle user logout
   const handleSignOut = (e) => {
     e.preventDefault();
     // to let a user signOut
