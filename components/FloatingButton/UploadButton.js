@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 import {
   addDoc,
   collection,
@@ -7,7 +7,7 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import {signOut} from "firebase/auth"
+import { signOut } from "firebase/auth";
 import { db, storage, auth } from "../../firebase/firebase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import {
@@ -17,6 +17,7 @@ import {
   Button,
   SpeedDial,
   SpeedDialAction,
+  CircularProgress,
 } from "@mui/material";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import VideoCameraBackIcon from "@mui/icons-material/VideoCameraBack";
@@ -25,7 +26,6 @@ import FlakyIcon from "@mui/icons-material/Flaky";
 import AddIcon from "@mui/icons-material/Add";
 import { useStateValue } from "../../context-api/StateProvider";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-
 
 const style = {
   position: "absolute",
@@ -47,7 +47,7 @@ const UploadButton = () => {
   const inputRef = useRef(null);
   const filePickerRef = useRef(null);
   const router = useRouter();
-  
+
   // post upload function
   const handleUpload = async () => {
     if (loading) return;
@@ -59,8 +59,8 @@ const UploadButton = () => {
       profileImg: user?.photoURL,
       timestamp: serverTimestamp(),
     });
-    console.log("New post", docRef.id);
-    // get the post ID of the created post
+    // console.log("New post", docRef.id);
+    // get the post ID of the created post from firebase database
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
     // upload that image to firestore storage with use of POST ID
     await uploadString(imageRef, selectedFile, "data_url").then(async () => {
@@ -87,22 +87,24 @@ const UploadButton = () => {
       setSelectedFile(readerEvent.target.result);
     };
   };
-  
+
   // logout user
   const handleLogout = (e) => {
     e.preventDefault();
-    signOut(auth).then(()=>{
-      dispatch({
-        type: "SET_USER",
-        user: null
+    signOut(auth)
+      .then(() => {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+        router.push("/login");
       })
-      router.push("/login")
-    }).catch(err =>  console.error(err))
-  }
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="lg:hidden">
-       <Modal className="w-full" open={open} onClose={() => setOpen(false)}>
+      <Modal className="w-full" open={open} onClose={() => setOpen(false)}>
         <Box sx={style}>
           <div className="flex items-center px-2 py-2">
             <Avatar
@@ -112,7 +114,7 @@ const UploadButton = () => {
             />
             <input
               ref={inputRef}
-              className="bg-transparent flex-1 ml-2 text-black text-sm border-0 outline-none"
+              className="bg-transparent flex-1 ml-2 text-black text-xs border-0 outline-none"
               placeholder={`Connect as ${user?.displayName}`}
             />
             <input
@@ -127,7 +129,7 @@ const UploadButton = () => {
               className="flex bg-black text-white items-center border-none text-sm rounded px-2 py-1 font-bold"
             >
               {loading ? (
-                "Uploading..."
+                <CircularProgress color="inherit" size={24} />
               ) : (
                 <>
                   <CreateIcon fontSize="small" className="mr-1" />
@@ -173,20 +175,22 @@ const UploadButton = () => {
         className="fixed right-0 bottom-1 z-50"
         sx={{ "& > :not(style)": { m: 1 } }}
       >
-         <SpeedDial
-        ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 16, right: 16 }}
-        icon={<FlakyIcon />}
-      >
+        <SpeedDial
+          ariaLabel="SpeedDial basic example"
+          sx={{ position: "absolute", bottom: 16, right: 16 }}
+          icon={<FlakyIcon />}
+        >
           <SpeedDialAction
             icon={<AddIcon />}
-              onClick={()=>setOpen(true)}
+            onClick={() => setOpen(true)}
             tooltipTitle="Create post"
-            />
-                <SpeedDialAction icon={<ExitToAppIcon />} onClick={handleLogout} tooltipTitle="Logout" />
-
-
-      </SpeedDial>
+          />
+          <SpeedDialAction
+            icon={<ExitToAppIcon />}
+            onClick={handleLogout}
+            tooltipTitle="Logout"
+          />
+        </SpeedDial>
       </Box>
     </div>
   );
