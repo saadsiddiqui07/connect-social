@@ -3,31 +3,31 @@ import Head from "next/head";
 import Product from "../../components/Product/Product";
 import Header from "../../components/Header/Header";
 import MobileHeader from "../../components/MobileHeader/MobileHeader";
-import { useStateValue } from "../../context-api/StateProvider";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CheckoutProduct from "../../components/CheckoutProducts/CheckoutProducts";
-import Subtotal from "../../components/Subtotal/Subtotal";
+// import { useStateValue } from "../../context-api/StateProvider";
+// import Badge from "@mui/material/Badge";
+// import { styled } from "@mui/material/styles";
+// import IconButton from "@mui/material/IconButton";
+// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+// import CheckoutProduct from "../../components/CheckoutProducts/CheckoutProducts";
+// import Subtotal from "../../components/Subtotal/Subtotal";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: "0 4px",
-  },
-}));
+// const StyledBadge = styled(Badge)(({ theme }) => ({
+//   "& .MuiBadge-badge": {
+//     right: -3,
+//     top: 13,
+//     border: `2px solid ${theme.palette.background.paper}`,
+//     padding: "0 4px",
+//   },
+// }));
 
 const MarketPlace = ({ products }) => {
   const [showCartItems, setShowCartItems] = useState(false);
-  const [{ cart }] = useStateValue();
+  // const [{ cart }] = useStateValue();
 
-  const showItems = (e) => {
-    e.preventDefault();
-    setShowCartItems(!showCartItems);
-  };
+  // const showItems = (e) => {
+  //   e.preventDefault();
+  //   setShowCartItems(!showCartItems);
+  // };
 
   return (
     <div>
@@ -39,9 +39,6 @@ const MarketPlace = ({ products }) => {
       <div className="sm:hidden">
         <MobileHeader />
       </div>
-      <h2 className="text-xl font-mono font-semibold py-2 ml-5">
-        Top listed products
-      </h2>
       <div className="p-5 flex flex-col-reverse md:flex-row">
         <div className="px-5 bg-gray-50 overflow-y-scroll scrollbar-hide center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
           {products.map((product) => (
@@ -57,7 +54,7 @@ const MarketPlace = ({ products }) => {
             />
           ))}
         </div>
-        <div className="w-[80%] h-[550px] overflow-y-scroll scrollbar-hidden flex-col">
+        {/* <div className="w-[80%] h-[550px] overflow-y-scroll scrollbar-hidden flex-col">
           <div className="flex items-center px-3 border-b-2 border-gray-300">
             <h3 className="font-extrabold font-mono text-md md:text-lg">
               Your cart
@@ -83,7 +80,7 @@ const MarketPlace = ({ products }) => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
