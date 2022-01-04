@@ -1,10 +1,10 @@
 import { Avatar } from "@mui/material";
 import { useStateValue } from "../../context-api/StateProvider";
 
-const SidebarOptions = ({ username, profilePic }) => {
+const SidebarOptions = ({ username, profilePic, email }) => {
   const [{ user }] = useStateValue();
-  // if logged in as a user then do not list in sidebar
-  if (user?.displayName === username) return null;
+  // if logged in as a user then do not show username in sidebar
+  if (email === user?.email) return null;
   return (
     <div
       className="flex mt-5 pl-5 pr-10  items-center 
@@ -12,7 +12,9 @@ const SidebarOptions = ({ username, profilePic }) => {
     >
       <Avatar src={profilePic} />
       <div className="hidden lg:inline-flex">
-        <p className="text-xs font-bold text-gray-500 ml-3">{username.split(" ").join("").toLowerCase()}</p>
+        <p className="text-xs font-bold text-gray-500 ml-3">
+          {username.split(" ").join("").toLowerCase()}
+        </p>
       </div>
     </div>
   );
