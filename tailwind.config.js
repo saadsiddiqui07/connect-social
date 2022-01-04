@@ -4,7 +4,11 @@ module.exports = {
 
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      animation : {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+      }
+    },
   },
   variants: {
     extend: {},

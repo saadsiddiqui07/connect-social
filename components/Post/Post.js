@@ -82,7 +82,9 @@ export default function Post({
           </IconButton>
         }
         title={username}
-        subheader={new Date(timestamp?.toDate()).toUTCString()}
+        subheader={new Date(timestamp?.toDate()).toLocaleString(undefined, {
+          timeZone: "Asia/Kolkata",
+        })}
       />
       {image && (
         <CardMedia

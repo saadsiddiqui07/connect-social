@@ -20,13 +20,13 @@
   }
 
   .posts_containerSm {
-    @apply overflow-y-scroll  scrollbar-hide h-screen mt-5;
+    @apply overflow-y-scroll bg-gray-100 scrollbar-hide h-[auto] mt-5;
   }
   .user {
-    @apply flex items-center justify-between ml-auto rounded-md p-1 relative;
+    @apply flex items-center relative justify-between ml-auto rounded-md p-1 relative;
   }
   .recipient {
-    @apply flex justify-between items-center rounded-md m-2 p-1 relative;
+    @apply flex justify-between  relative items-center rounded-md m-2 p-1 relative;
   }
 
   .recipient > .profile_picture {

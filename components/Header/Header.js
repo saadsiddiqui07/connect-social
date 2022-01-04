@@ -11,7 +11,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 
 const Header = () => {
-  const [{ user, cart }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   const router = useRouter();
 
   const handleSignOut = (e) => {
