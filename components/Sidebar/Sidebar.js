@@ -26,6 +26,7 @@ const Sidebar = () => {
           key={profile.id}
           username={profile.data().username}
           profilePic={profile.data().profilePic}
+          email={profile.data().email}
         />
       ))}
     </div>
