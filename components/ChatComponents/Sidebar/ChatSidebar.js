@@ -53,6 +53,7 @@ const ChatSidebar = () => {
     await addDoc(collection(db, "chatRooms"), {
       name: input,
       createdBy: user?.email,
+      image: user?.photoURL,
       timestamp: serverTimestamp(),
     });
     setOpen(false);
@@ -102,7 +103,12 @@ const ChatSidebar = () => {
       </button>
       <div className="">
         {chatRooms.map((chat) => (
-          <Chat key={chat.id} id={chat.id} chatName={chat.data().name} />
+          <Chat
+            key={chat.id}
+            id={chat.id}
+            chatName={chat.data().name}
+            image={chat.data().image}
+          />
         ))}
       </div>
     </div>
