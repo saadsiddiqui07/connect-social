@@ -1,17 +1,19 @@
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  Avatar,
+  IconButton,
+  Typography,
+  CardActions,
+} from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useStateValue } from "../../context-api/StateProvider";
 import { useState, useEffect } from "react";
-import { CardActions } from "@mui/material";
 import {
   collection,
   addDoc,
@@ -26,6 +28,7 @@ import { db } from "../../firebase/firebase";
 
 export default function Post({
   username,
+  email,
   caption,
   id,
   profileImg,
@@ -69,7 +72,7 @@ export default function Post({
     deleteDoc(doc(db, "posts", id));
   };
 
-  const showDeleteIcon = user?.displayName === username;
+  const showDeleteIcon = user?.email === email;
   const showComments = showCommentInput && comments.length > 0;
 
   return (
@@ -121,7 +124,7 @@ export default function Post({
         </IconButton>
       </CardActions>
       {/* Comments section */}
-      {showComments && (
+      {!showComments && (
         <>
           <div>
             {comments.map((comment, idx) => (
