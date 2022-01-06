@@ -25,6 +25,7 @@ const Posts = () => {
           key={post.id}
           id={post.id}
           username={post.data().username}
+          email={post.data().email}
           image={post.data().image}
           caption={post.data().caption}
           profileImg={post.data().profileImg}
