@@ -55,6 +55,7 @@ const UploadButton = () => {
     // create and add post details to firestore
     const docRef = await addDoc(collection(db, "posts"), {
       username: user?.displayName,
+      email: user?.email,
       caption: inputRef.current.value,
       profileImg: user?.photoURL,
       timestamp: serverTimestamp(),
