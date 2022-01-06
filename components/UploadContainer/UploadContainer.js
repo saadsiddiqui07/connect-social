@@ -38,6 +38,7 @@ const UploadContainer = () => {
     // create and add post to firestore
     const docRef = await addDoc(collection(db, "posts"), {
       username: user?.displayName,
+      email: user?.email,
       caption: input,
       profileImg: user?.photoURL,
       timestamp: serverTimestamp(),
@@ -92,7 +93,7 @@ const UploadContainer = () => {
           src={selectedFile}
           alt=""
           onClick={() => setSelectedFile(null)}
-          className="w-full object-contain cursor-pointer"
+          className="w-full h-[150px] object-contain cursor-pointer"
         />
       ) : (
         <div className="flex mt-2 justify-between px-3 border-t-2 border-gray-200">
