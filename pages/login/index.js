@@ -59,7 +59,7 @@ export default function SignIn() {
           type: "SET_USER",
           user: result.user,
         });
-        // add user into the firestore 
+        // add user into the firestore
         addDoc(collection(db, "users"), {
           username: result.user.displayName,
           profilePic: result.user.photoURL,
