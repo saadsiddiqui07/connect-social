@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 
 import { useStateValue } from "../../context-api/StateProvider";
 
-export default function Product({ id, image, price, title, rating, category }) {
+export default function Product({ id, image, price, title, rating, category , setOpen}) {
   const [{ cart }, dispatch] = useStateValue();
   const [disableButton, setDisableButton] = React.useState(false);
   console.log(cart?.length);
@@ -22,6 +22,7 @@ export default function Product({ id, image, price, title, rating, category }) {
         category,
       },
     });
+    setOpen(true)
     setDisableButton(!disableButton);
   };
 
