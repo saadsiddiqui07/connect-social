@@ -6,7 +6,8 @@ import { useStateValue } from "../../context-api/StateProvider";
 
 const CheckoutProduct = ({ id, title, price, rating, image, category }) => {
   const [{}, dispatch] = useStateValue();
-
+  
+  // remove a product from cart
   const removeFromCart = () => {
     dispatch({
       type: "REMOVE_FROM_CART",
