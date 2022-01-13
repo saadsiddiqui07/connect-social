@@ -1,37 +1,26 @@
-import {
-  CardActionArea,
-  Typography,
-  CardContent,
-  Card,
-} from "@mui/material";
+import { truncateText } from "../../utils/truncateText";
 
-export default function NewsCard({
-  author,
-  title,
-  description,
-  url,
-  source,
-  image,
-}) {
+const NewsCard = ({ author, title, description, url, image }) => {
   if (!author) return null;
   return (
-    <Card className="m-8 lg:m-10 shadow-lg">
-      <a  href={url}>
-      <p className="py-1 px-2 font-semibold text-gray-700 font-mono">
-        Source: {source.name}
-      </p>
-      <CardActionArea>
-        <img className="h-20 object-contain w-full" src={image} alt="NEWS" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <div className="flex flex-col items-center shadow-lg rounded-2xl mx-4 my-10 hover:bg-gray-100 hover:shadow-2xl">
+      <img src={image} alt="News" className="h-[150px] object-cover w-[100%]" />
+      <div className="flex flex-col w-full p-2 ">
+        <small className="text-gray-500 underline font-mono font-bold">
+          Published by: {author}
+        </small>
+        <a
+          href={url}
+          className="font-medium cursor-pointer text-blue-700 hover:underline"
+        >
+          {title}
         </a>
-    </Card>
+        <span className="text-sm font-mono mt-2">
+          {truncateText(description, 100)}
+        </span>
+      </div>
+    </div>
   );
-}
+};
+
+export default NewsCard;
