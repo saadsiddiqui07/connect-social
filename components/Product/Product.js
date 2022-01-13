@@ -1,15 +1,18 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-
+import {useState} from "react";
+import { Card, CardActions, CardContent } from "@mui/material";
 import { useStateValue } from "../../context-api/StateProvider";
 
-export default function Product({ id, image, price, title, rating, category , setOpen}) {
+const Product = ({
+  id,
+  image,
+  price,
+  title,
+  rating,
+  category,
+  setOpen,
+}) =>{
   const [{ cart }, dispatch] = useStateValue();
-  const [disableButton, setDisableButton] = React.useState(false);
-  console.log(cart?.length);
-
+  const [disableButton, setDisableButton] = useState(false);
   const addToCart = () => {
     dispatch({
       type: "ADD_TO_CART",
@@ -22,7 +25,7 @@ export default function Product({ id, image, price, title, rating, category , se
         category,
       },
     });
-    setOpen(true)
+    setOpen(true);
     setDisableButton(!disableButton);
   };
 
@@ -66,3 +69,5 @@ export default function Product({ id, image, price, title, rating, category , se
     </Card>
   );
 }
+
+export default Product
