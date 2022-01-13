@@ -26,7 +26,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
-export default function Post({
+const Post = ({
   username,
   email,
   caption,
@@ -34,7 +34,7 @@ export default function Post({
   profileImg,
   timestamp,
   image,
-}) {
+}) => {
   const [{ user }] = useStateValue();
   const [isLiked, setIsLiked] = useState(false);
   const [showCommentInput, setShowCommentInput] = useState(false);
@@ -58,7 +58,7 @@ export default function Post({
     e.preventDefault();
     const commentToSend = comment;
     setComment("");
-
+    // add a new document to comments collection inside posts collection
     await addDoc(collection(db, "posts", id, "comments"), {
       comment: commentToSend,
       username: user?.displayName,
@@ -67,6 +67,7 @@ export default function Post({
     });
   };
 
+  // delete a post
   const deletePost = (e) => {
     e.stopPropagation();
     deleteDoc(doc(db, "posts", id));
@@ -158,4 +159,6 @@ export default function Post({
       )}
     </Card>
   );
-}
+};
+
+export default Post;
