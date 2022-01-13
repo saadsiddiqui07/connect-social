@@ -19,7 +19,7 @@ const Movies = () => {
       <MovieBanner />
       <div className="px-5">
         <MovieRow
-          title="NETFLIX ORIGINALS"
+          title="ORIGINALS"
           fetchUrl={requests.fetchNetflixOriginals}
           isLargeRow
         />
