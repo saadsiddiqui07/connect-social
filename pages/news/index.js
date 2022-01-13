@@ -19,16 +19,9 @@ const News = ({ results }) => {
       <div className="px-5 pt-5 bg-gray-100 center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
         {results.map((result) => (
           <NewsCard
-            id={result.id}
             key={result.id}
-            author={result.author}
-            title={result.title}
-            content={result.content}
-            description={result.description}
-            date={result.publishedAt}
             image={result.urlToImage}
-            url={result.url}
-            source={result.source}
+            {...result}
           />
         ))}
       </div>
