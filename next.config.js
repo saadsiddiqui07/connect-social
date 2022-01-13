@@ -5,6 +5,7 @@ module.exports = {
       "pbs.twimg.com",
       "fiverr-res.cloudinary.com",
       "ppcprotect.com",
+      "image.tmdb.org"
     ],
   },
 };
