@@ -16,13 +16,9 @@ const News = ({ results }) => {
       <div className="sm:hidden">
         <MobileHeader />
       </div>
-      <div className="px-5 pt-5 bg-gray-100 center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
-        {results.map((result) => (
-          <NewsCard
-            key={result.id}
-            image={result.urlToImage}
-            {...result}
-          />
+      <div className="px-5 bg-gray-100 center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
+        {results.map((result, index) => (
+          <NewsCard key={index} image={result.urlToImage} {...result} />
         ))}
       </div>
     </div>
