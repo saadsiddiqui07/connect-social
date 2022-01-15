@@ -4,10 +4,8 @@ import Product from "../../components/Product/Product";
 import Header from "../../components/Header/Header";
 import MobileHeader from "../../components/MobileHeader/MobileHeader";
 import { useStateValue } from "../../context-api/StateProvider";
-import Badge from "@mui/material/Badge";
-import IconButton from "@mui/material/IconButton";
+import { Badge, IconButton, Drawer } from "@mui/material/";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Drawer } from "@mui/material";
 import Cart from "../../components/Cart/Cart";
 
 const MarketPlace = ({ products }) => {
@@ -36,13 +34,13 @@ const MarketPlace = ({ products }) => {
         </IconButton>
       </div>
       <div className="p-5 flex flex-col-reverse md:flex-row">
-        <div className="px-5 bg-gray-50 overflow-y-scroll scrollbar-hide center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
+        <div className="px-5 bg-white overflow-y-scroll scrollbar-hide center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
           {products.map((product) => (
             <Product
               key={product.id}
               id={product.id}
-              {...product}
               setOpen={setOpen}
+              {...product}
             />
           ))}
         </div>
