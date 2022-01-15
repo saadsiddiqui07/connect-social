@@ -1,18 +1,17 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+import { Card, CardActions, CardContent, Button } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { useStateValue } from "../../context-api/StateProvider";
 
-const CheckoutProduct = ({ id, title, price, rating, image, category }) => {
+const CheckoutProduct = ({ id, title, price, image, category, setOpen }) => {
   const [{}, dispatch] = useStateValue();
-  
+
   // remove a product from cart
   const removeFromCart = () => {
     dispatch({
       type: "REMOVE_FROM_CART",
       id: id,
     });
+    setOpen(false);
   };
 
   return (
@@ -32,13 +31,14 @@ const CheckoutProduct = ({ id, title, price, rating, image, category }) => {
       </CardContent>
       <CardActions className="flex mt-auto w-full justify-between  items-center">
         <p className="font-bold text-lg">${price}</p>
-
-        <button
+        <Button
           onClick={removeFromCart}
-          className="text-sm font-bold flex  text-white bg-gray-500 p-1 rounded"
+          variant="contained"
+          color="error"
+          endIcon={<CloseIcon />}
         >
           Remove
-        </button>
+        </Button>
       </CardActions>
     </Card>
   );
