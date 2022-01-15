@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { auth, provider, db } from "../../firebase/firebase";
 import { useStateValue } from "../../context-api/StateProvider";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+import { useSpring, animated } from "react-spring";
 import GoogleIcon from "@mui/icons-material/Google";
 import {
   Button,
@@ -13,9 +16,6 @@ import {
   Typography,
   Container,
 } from "@mui/material/";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
-import { useSpring, animated } from "react-spring";
 import logo from "../../assets/connect-logo.png";
 
 function Copyright(props) {
@@ -27,10 +27,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Connect
-      </Link>{" "}
-      {new Date().getFullYear()}
+      <Link color="inherit">Connect</Link> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -55,6 +52,7 @@ export default function SignIn() {
     // sign in using google accounts
     signInWithPopup(auth, provider)
       .then((result) => {
+        // console.log(result);
         dispatch({
           type: "SET_USER",
           user: result.user,
