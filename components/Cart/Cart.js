@@ -29,7 +29,12 @@ const Cart = ({ setOpen }) => {
       </div>
       <div className="flex flex-col items-center">
         {cart?.map((product) => (
-          <CheckoutProduct key={product.id} id={product.id} {...product} />
+          <CheckoutProduct
+            key={product.id}
+            id={product.id}
+            {...product}
+            setOpen={setOpen}
+          />
         ))}
       </div>
     </div>
