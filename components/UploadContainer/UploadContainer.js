@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Avatar } from "@mui/material";
+import { Avatar, CircularProgress } from "@mui/material";
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 import VideoCameraBackOutlinedIcon from "@mui/icons-material/VideoCameraBackOutlined";
 import AddReactionOutlinedIcon from "@mui/icons-material/AddReactionOutlined";
@@ -43,7 +43,7 @@ const UploadContainer = () => {
       profileImg: user?.photoURL,
       timestamp: serverTimestamp(),
     });
-    console.log("New post", docRef.id);
+    // console.log("New post", docRef.id);
     // get the post ID of the created post
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
     // upload that image to firestore storage with use of POST ID
@@ -85,7 +85,11 @@ const UploadContainer = () => {
           onClick={handleImageUpload}
           className="bg-black text-white px-1 text-xs rounded font-bold font-mono"
         >
-          {loading ? "Uploading..." : "Post It!"}
+          {loading ? (
+            <CircularProgress size={30} color="inherit" />
+          ) : (
+            "Post It!"
+          )}
         </button>
       </div>
       {selectedFile ? (
