@@ -11,7 +11,7 @@ const NewsCard = ({ author, title, description, url, image }) => {
         </small>
         <a
           href={url}
-          className="font-medium cursor-pointer text-blue-700 hover:underline"
+          className="font-medium cursor-pointer hover:underline hover:text-blue-500"
         >
           {title}
         </a>
