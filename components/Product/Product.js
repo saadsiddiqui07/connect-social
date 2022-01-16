@@ -1,18 +1,12 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Card, CardActions, CardContent } from "@mui/material";
 import { useStateValue } from "../../context-api/StateProvider";
 
-const Product = ({
-  id,
-  image,
-  price,
-  title,
-  rating,
-  category,
-  setOpen,
-}) =>{
-  const [{ cart }, dispatch] = useStateValue();
+const Product = ({ id, image, price, title, rating, category, setOpen }) => {
+  const [{}, dispatch] = useStateValue();
   const [disableButton, setDisableButton] = useState(false);
+
+  // add a product to cart
   const addToCart = () => {
     dispatch({
       type: "ADD_TO_CART",
@@ -68,6 +62,6 @@ const Product = ({
       </CardActions>
     </Card>
   );
-}
+};
 
-export default Product
+export default Product;
