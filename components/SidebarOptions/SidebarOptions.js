@@ -3,8 +3,10 @@ import { useStateValue } from "../../context-api/StateProvider";
 
 const SidebarOptions = ({ username, profilePic, email }) => {
   const [{ user }] = useStateValue();
+
   // if logged in as a user then do not show username in sidebar
   if (email === user?.email) return null;
+
   return (
     <div
       className="flex mt-5 pl-5 pr-10  items-center 
