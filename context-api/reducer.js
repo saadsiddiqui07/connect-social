@@ -36,13 +36,7 @@ const reducer = (state, action) => {
       } else {
         console.alert(`Cannot delete product from (id: ${action.id})`);
       }
-
       return { ...state, cart: newCart };
-    case "SET_DARK_MODE":
-      return {
-        ...state,
-        darkMode: action.mode,
-      };
 
     default:
       return state;
