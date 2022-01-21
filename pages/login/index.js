@@ -38,6 +38,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [{}, dispatch] = useStateValue();
   const router = useRouter();
+
   // animation config
   const [state] = useState(true);
   const { x } = useSpring({
