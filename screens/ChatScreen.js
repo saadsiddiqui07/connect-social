@@ -143,7 +143,9 @@ const ChatScreen = () => {
         <Avatar />
         <div className="ml-5">
           <h4 className="font-bold text-sm">{roomName}</h4>
-          <p className="text-xs">Last seen at 8:47 pm</p>
+          <p className="text-xs">
+            Room Admin: <strong>{roomAdmin}</strong>
+          </p>
         </div>
         <IconButton onClick={openEditModal} className="ml-auto">
           <ModeEditOutlineOutlinedIcon className="text-blue-500" />
