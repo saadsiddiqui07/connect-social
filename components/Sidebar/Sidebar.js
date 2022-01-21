@@ -1,32 +1,33 @@
 import { useState, useEffect } from "react";
 import SidebarOptions from "../SidebarOptions/SidebarOptions";
-import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+import axios from "axios";
 
 const Sidebar = () => {
-  const [friends, setFriends] = useState([]);
+  const [randomData, setRandomData] = useState([]);
+
+  // fetch random users data
+  const fetchRandomUsers = async () => {
+    await axios
+      .get("https://random-data-api.com/api/users/random_user?size=10")
+      .then((response) => {
+        setRandomData(response.data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(
-      query(collection(db, "users")),
-      (snapshot) => {
-        setFriends(snapshot.docs);
-      }
-    );
-    return () => {
-      unsubscribe();
-    };
+    fetchRandomUsers();
   }, []);
 
   return (
     <div className="hidden flex-1 lg:inline h-[50vh] bg-white p-2 rounded shadow-lg ml-5 mr-6 mb-auto overflow-y-scroll scrollbar-hide">
       <p className="mx-5 font-bold font-mono">Suggested</p>
-      {friends.map((profile) => (
+      {randomData.map((profile, index) => (
         <SidebarOptions
-          key={profile.id}
-          username={profile.data().username}
-          profilePic={profile.data().profilePic}
-          email={profile.data().email}
+          key={index}
+          firstName={profile.first_name}
+          lastName={profile.last_name}
+          avatar={profile.avatar}
         />
       ))}
     </div>
