@@ -87,7 +87,7 @@ const ChatSidebar = () => {
         onClick={() => setOpen(true)}
         className="bg-black font-extrabold text-white my-2 mx-5 p-2 hover:text-blue-500 "
       >
-        Connect via Messages...
+        CREATE A ROOM
       </button>
       <div className="">
         {chatRooms.map((chat) => (
