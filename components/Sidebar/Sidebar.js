@@ -19,7 +19,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="hidden flex-1 lg:inline bg-white p-2 rounded shadow-lg ml-5 mr-6 mb-auto">
+    <div className="hidden flex-1 lg:inline h-[50vh] bg-white p-2 rounded shadow-lg ml-5 mr-6 mb-auto overflow-y-scroll scrollbar-hide">
       <p className="mx-5 font-bold font-mono">Suggested</p>
       {friends.map((profile) => (
         <SidebarOptions
