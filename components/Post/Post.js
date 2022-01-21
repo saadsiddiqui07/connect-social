@@ -103,7 +103,6 @@ const Post = ({
         <CardContent>
           <Typography
             className="flex text-black"
-            component="p"
             variant="body2"
             color="text.secondary"
           >
