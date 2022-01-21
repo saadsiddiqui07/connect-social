@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Head from "next/head";
-import Product from "../../components/Product/Product";
-import Header from "../../components/Header/Header";
-import MobileHeader from "../../components/MobileHeader/MobileHeader";
+import { useState } from "react";
 import { useStateValue } from "../../context-api/StateProvider";
 import { Badge, IconButton, Drawer } from "@mui/material/";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Product from "../../components/Product/Product";
+import MobileHeader from "../../components/MobileHeader/MobileHeader";
+import Header from "../../components/Header/Header";
 import Cart from "../../components/Cart/Cart";
 
 const MarketPlace = ({ products }) => {
