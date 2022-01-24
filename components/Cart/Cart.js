@@ -5,7 +5,15 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Button, IconButton } from "@mui/material";
 
 const Cart = ({ setOpen }) => {
-  const [{ cart }] = useStateValue();
+  const [{ cart }, dispatch] = useStateValue();
+
+  // empty the total cart
+  const handleEmptyCart = () => {
+    dispatch({
+      type: "EMPTY_CART",
+    });
+    setOpen(false);
+  };
 
   return (
     <div className="md:w-[500px] ">
@@ -19,13 +27,21 @@ const Cart = ({ setOpen }) => {
           </p>
           <h3>Total: ${Math.floor(getCartTotal(cart))}</h3>
         </div>
-        <Button
-          className="text-sm m-2 mx-auto"
-          color="primary"
-          variant="contained"
-        >
-          Proceed to Checkout
-        </Button>
+        <div className="flex items-center justify-around mx-2 w-full">
+          <Button
+            className="text-sm m-2 mx-auto"
+            color="primary"
+            variant="contained"
+          >
+            Proceed to Checkout
+          </Button>
+          <button
+            className="bg-black text-white font-mono p-1 rounded"
+            onClick={handleEmptyCart}
+          >
+            Empty cart
+          </button>
+        </div>
       </div>
       <div className="flex flex-col items-center">
         {cart?.map((product) => (
