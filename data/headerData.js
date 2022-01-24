@@ -1,7 +1,6 @@
 import HomeSharpIcon from "@mui/icons-material/HomeSharp";
 import StickyNote2SharpIcon from "@mui/icons-material/StickyNote2Sharp";
 import StorefrontSharpIcon from "@mui/icons-material/StorefrontSharp";
-import NotificationsActiveRoundedIcon from "@mui/icons-material/NotificationsActiveRounded";
 import ForumRoundedIcon from "@mui/icons-material/ForumRounded";
 import MovieIcon from "@mui/icons-material/Movie";
 
