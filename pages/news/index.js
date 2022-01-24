@@ -36,7 +36,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      results: results.articles,
+      results: results.articles || null,
     },
   };
 };

@@ -52,6 +52,7 @@ const MarketPlace = ({ products }) => {
 export default MarketPlace;
 
 export const getServerSideProps = async () => {
+  // fetch products from api endpoint
   const products = await fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .catch((err) => console.log(err));
