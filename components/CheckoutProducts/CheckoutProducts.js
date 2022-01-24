@@ -1,8 +1,8 @@
-import { Card, CardActions, CardContent, Button } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import { useStateValue } from "../../context-api/StateProvider";
+import CloseIcon from "@mui/icons-material/Close";
+import { Card, CardActions, CardContent, Button } from "@mui/material";
 
-const CheckoutProduct = ({ id, title, price, image, category, setOpen }) => {
+const CheckoutProduct = ({ id, title, price, image, category }) => {
   const [{}, dispatch] = useStateValue();
 
   // remove a product from cart
@@ -11,7 +11,6 @@ const CheckoutProduct = ({ id, title, price, image, category, setOpen }) => {
       type: "REMOVE_FROM_CART",
       id: id,
     });
-    setOpen(false);
   };
 
   return (
