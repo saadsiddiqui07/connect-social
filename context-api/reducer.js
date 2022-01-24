@@ -1,9 +1,10 @@
+// initial state values of the application
 export const initialState = {
   cart: [],
   user: null,
-  darkMode: false,
 };
 
+// calculate total amount of the cart
 export const getCartTotal = (cart) =>
   cart?.reduce((amount, item) => item.price + amount, 0);
 
@@ -14,16 +15,13 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
-    case "SET_USER_ADDRESS":
-      return {
-        ...state,
-        address: action.address,
-      };
+
     case "ADD_TO_CART":
       return {
         ...state,
         cart: [...state.cart, action.item],
       };
+
     case "REMOVE_FROM_CART":
       let newCart = [...state.cart];
 
@@ -37,6 +35,12 @@ const reducer = (state, action) => {
         console.alert(`Cannot delete product from (id: ${action.id})`);
       }
       return { ...state, cart: newCart };
+
+    case "EMPTY_CART":
+      return {
+        ...state,
+        cart: [],
+      };
 
     default:
       return state;
