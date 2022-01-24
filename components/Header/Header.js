@@ -13,7 +13,7 @@ import logo from "../../assets/connect-logo.png";
 const Header = () => {
   const [{ user }, dispatch] = useStateValue();
   const router = useRouter();
-  
+
   // handle user logout
   const handleSignOut = (e) => {
     e.preventDefault();
@@ -61,7 +61,7 @@ const Header = () => {
       <div className="flex w-full justify-center items-center">
         {user ? (
           <>
-            <div className="flex ml-auto space-x-5 items-center">
+            <div className="hidden md:inline-flex flex ml-auto space-x-5 items-center">
               <Avatar src={user?.photoURL} className="hidden sm:inline-flex" />
               <span className="hidden xl:inline-flex font-bold font-mono">
                 {user?.displayName}
