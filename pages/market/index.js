@@ -57,7 +57,7 @@ export const getServerSideProps = async () => {
     .catch((err) => console.log(err));
   return {
     props: {
-      products,
+      products: products || null,
     },
   };
 };
