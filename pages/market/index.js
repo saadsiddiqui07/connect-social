@@ -39,8 +39,12 @@ const MarketPlace = ({ products }) => {
             <Product
               key={product.id}
               id={product.id}
+              image={product.image}
+              price={product.price}
+              title={product.title}
+              category={product.category}
+              rating={product.rating}
               setOpen={setOpen}
-              {...product}
             />
           ))}
         </div>
@@ -53,12 +57,13 @@ export default MarketPlace;
 
 export const getServerSideProps = async () => {
   // fetch products from api endpoint
-  const products = await fetch("https://fakestoreapi.com/products")
+  const results = await fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
+
   return {
     props: {
-      products: products || null,
+      products: results || null,
     },
   };
 };
