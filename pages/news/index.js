@@ -6,6 +6,8 @@ import NewsCard from "../../components/NewsCard/NewsCard";
 const API_KEY = process.env.NEWS_APIKEY;
 
 const News = ({ results }) => {
+  const data = results.articles;
+
   return (
     <div>
       <Head>
@@ -17,7 +19,7 @@ const News = ({ results }) => {
         <MobileHeader />
       </div>
       <div className="px-5 bg-gray-100 center-center sm:grid md:grid-cols-2 xl:grid-cols-3 3xl:flex flex-wrap justify-center">
-        {results.map((result, index) => (
+        {data.map((result, index) => (
           <NewsCard key={index} image={result.urlToImage} {...result} />
         ))}
       </div>
@@ -36,7 +38,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      results: results.articles || null,
+      results: results || null,
     },
   };
 };
