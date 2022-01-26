@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Avatar } from "@mui/material";
-import { useStateValue } from "../../../context-api/StateProvider";
 import { truncateText } from "../../../utils/truncateText";
 import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
 import { db } from "../../../firebase/firebase";
 
 const Chat = ({ id, chatName, image }) => {
   const [lastMessage, setLastMessage] = useState([]);
-  const [{ user }] = useStateValue();
   const router = useRouter();
 
   // redirect to a chat Room
