@@ -1,5 +1,4 @@
 import {
-  Card,
   CardHeader,
   CardMedia,
   CardContent,
@@ -78,7 +77,7 @@ const Post = ({
 
   return (
     <>
-      <Card className="m-5 w-4/5 ml-auto mr-auto">
+      <div className="bg-white m-5 w-4/5 ml-auto mr-auto">
         <CardHeader
           avatar={<Avatar src={profileImg} />}
           action={
@@ -122,7 +121,9 @@ const Post = ({
           </IconButton>
           <IconButton onClick={() => setShowCommentInput(!showCommentInput)}>
             <ChatBubbleOutlineIcon />{" "}
-            <p className="text-sm ml-2">{comments.length} comments</p>
+            <p className="text-sm ml-2">
+              {comments.length} {comments.length >= 1 ? "comment" : "comments"}
+            </p>
           </IconButton>
         </CardActions>
         {/* Comments section */}
@@ -158,7 +159,7 @@ const Post = ({
             </form>
           </>
         )}
-      </Card>
+      </div>
     </>
   );
 };
