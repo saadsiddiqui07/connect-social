@@ -11,9 +11,10 @@ import { useStateValue } from "../context-api/StateProvider";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import Login from "../pages/login/index";
-// sm:bg-red-100 md:bg-green-100 lg:bg-blue-200 xl:bg-orange-300
-export default function Home() {
+
+const Home = () => {
   const [{ user }, dispatch] = useStateValue();
+
   // check if the user is logged in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
@@ -54,4 +55,6 @@ export default function Home() {
       </main>
     </div>
   );
-}
+};
+
+export default Home;
