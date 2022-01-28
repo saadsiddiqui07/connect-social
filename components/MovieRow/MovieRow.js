@@ -11,8 +11,12 @@ const MovieRow = ({ title, fetchUrl, isLargeRow }) => {
   // fetch data for specific rows
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
+      try {
+        const request = await axios.get(fetchUrl);
+        setMovies(request.data.results);
+      } catch (err) {
+        console.error(err);
+      }
     };
     fetchData();
   }, [fetchUrl]);
