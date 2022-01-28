@@ -144,7 +144,8 @@ const ChatScreen = () => {
         <div className="ml-5">
           <h4 className="font-bold text-sm">{roomName}</h4>
           <p className="text-xs">
-            Room Admin: <strong>{roomAdmin}</strong>
+            Room Admin:{" "}
+            <strong>{user?.email === roomAdmin ? "You" : roomAdmin}</strong>
           </p>
         </div>
         <IconButton onClick={openEditModal} className="ml-auto">
