@@ -6,6 +6,10 @@ import {
   IconButton,
   Typography,
   CardActions,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  Button,
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -39,6 +43,7 @@ const Post = ({
   const [showCommentInput, setShowCommentInput] = useState(false);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
 
   // fetch all the comments from the firestore databse
   useEffect(() => {
@@ -70,6 +75,7 @@ const Post = ({
   const deletePost = (e) => {
     e.stopPropagation();
     deleteDoc(doc(db, "posts", id));
+    setOpenDialog(false);
   };
 
   const showDeleteIcon = user?.email === email;
@@ -77,11 +83,30 @@ const Post = ({
 
   return (
     <>
+      <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+        <DialogTitle id="alert-dialog-title" color="gray">
+          Are you sure you want to delete this post?
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={() => setOpenDialog(false)}>Cancel</Button>
+          <Button
+            color="error"
+            varaint="outlined"
+            onClick={deletePost}
+            autoFocus
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="bg-white m-5 w-4/5 ml-auto mr-auto">
         <CardHeader
           avatar={<Avatar src={profileImg} />}
           action={
-            <IconButton onClick={deletePost} aria-label="settings">
+            <IconButton
+              onClick={() => setOpenDialog(true)}
+              aria-label="settings"
+            >
               {showDeleteIcon && <DeleteForeverIcon />}
             </IconButton>
           }
