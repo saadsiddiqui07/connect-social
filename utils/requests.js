@@ -1,6 +1,6 @@
 // GET YOUR OWN API KEY for free from "https://developers.themoviedb.org/"
 
-const APIKEY = "1388d6af5bcc4dde1304a32c0d0d5d8c";
+const APIKEY = "43f94ce71ae8eceb736a77aaacdddb13";
 
 // API FORMAT
 // https://developers.themoviedb.org/3/discover/movie-discover
