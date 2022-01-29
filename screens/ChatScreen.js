@@ -81,6 +81,7 @@ const ChatScreen = () => {
       message: input,
       username: user?.displayName.split(" ").join("").toLowerCase(),
       email: user?.email,
+      profileImg: user?.photoURL,
       timestamp: serverTimestamp(),
     });
     setInput("");
@@ -161,6 +162,7 @@ const ChatScreen = () => {
               message={message.data().message}
               messageSender={message.data().email}
               username={message.data().username}
+              profileImg={message.data().profileImg}
               timestamp={message.data().timestamp}
             />
             <div className="mb-[20px]" ref={endOfMessageRef} />
