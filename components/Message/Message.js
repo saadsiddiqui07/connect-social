@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import { useStateValue } from "../../context-api/StateProvider";
 
-const Message = ({ message, messageSender, username, timestamp }) => {
+const Message = ({ message, messageSender, profileImg, timestamp }) => {
   const [{ user }] = useStateValue();
   // check if the message being sent is by the logged in user
   const sender = user?.email === messageSender;
@@ -9,7 +9,7 @@ const Message = ({ message, messageSender, username, timestamp }) => {
   return (
     <div className={`${sender ? "user" : "recipient"}`}>
       <Avatar
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+        src={profileImg}
         alt={user?.displayName[0]}
         className="profile_picture"
       />
