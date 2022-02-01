@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { auth, provider, db } from "../../firebase/firebase";
 import { useStateValue } from "../../context-api/StateProvider";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import { useSpring, animated } from "react-spring";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -33,7 +33,7 @@ function Copyright(props) {
   );
 }
 
-export default function SignIn() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [{}, dispatch] = useStateValue();
@@ -47,10 +47,9 @@ export default function SignIn() {
     config: { duration: 900 },
   });
 
-  // to sign a new user
+  // sign in a new user
   const handleSignIn = (e) => {
     e.preventDefault();
-    // sign in using google accounts
     signInWithPopup(auth, provider)
       .then((result) => {
         // console.log(result);
@@ -58,32 +57,15 @@ export default function SignIn() {
           type: "SET_USER",
           user: result.user,
         });
+        router.push("/");
         // add user into the firestore
         addDoc(collection(db, "users"), {
           username: result.user.displayName,
           profilePic: result.user.photoURL,
           email: result.user.email,
         });
-        router.push("/");
       })
       .catch((err) => console.log(err));
-  };
-
-  // sign in with email and password
-  const handleEmailSignIn = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        console.log(result.user);
-        dispatch({
-          type: "SET_USER",
-          user: result.user,
-        });
-        router.push("/");
-      })
-      .catch((err) => console.log(err));
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -166,7 +148,6 @@ export default function SignIn() {
                 it soon.
               </small>
               <Button
-                onClick={handleEmailSignIn}
                 type="submit"
                 fullWidth
                 sx={{ mt: 3, mb: 2 }}
@@ -191,4 +172,6 @@ export default function SignIn() {
       </div>
     </animated.div>
   );
-}
+};
+
+export default Login;
