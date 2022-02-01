@@ -114,6 +114,7 @@ const UploadButton = () => {
               alt="img"
             />
             <input
+              autoFocus
               ref={inputRef}
               className="bg-transparent flex-1 ml-2 text-black text-xs border-0 outline-none"
               placeholder={`Connect as ${user?.displayName}`}

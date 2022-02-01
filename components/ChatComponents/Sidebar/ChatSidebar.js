@@ -60,6 +60,7 @@ const ChatSidebar = () => {
               alt="img"
             />
             <input
+              autoFocus
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="bg-transparent flex-1 ml-2 text-black text-sm border-1 border-b-2 outline-none"

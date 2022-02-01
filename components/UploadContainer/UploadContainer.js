@@ -69,6 +69,7 @@ const UploadContainer = () => {
           alt="img"
         />
         <input
+          autoFocus
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="flex-1 h-10 rounded pl-2 border-0 outline-none mr-3 bg-gray-100"

@@ -107,6 +107,7 @@ const ChatScreen = () => {
                 />
                 <input
                   value={newRoomName}
+                  autoFocus
                   onChange={(e) => setNewRoomName(e.target.value)}
                   className="bg-transparent flex-1 ml-2 text-black text-sm border-1 border-b-2 outline-none"
                   placeholder="Enter email or username..."
@@ -174,6 +175,9 @@ const ChatScreen = () => {
           <SentimentSatisfiedOutlinedIcon fontSize="medium" />
         </IconButton>
         <input
+          spellCheck="true"
+          autoComplete="on"
+          autoFocus
           className="flex flex-1 outline-none h-10 text-md placeholder-gray-700  border-b-2 border-black"
           value={input}
           onChange={(e) => setInput(e.target.value)}
