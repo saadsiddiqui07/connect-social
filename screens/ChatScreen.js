@@ -150,7 +150,7 @@ const ChatScreen = () => {
             <strong>{user?.email === roomAdmin ? "You" : roomAdmin}</strong>
           </p>
         </div>
-        <IconButton onClick={openEditModal} className="ml-auto">
+        <IconButton onClick={() => setOpenModal(true)} className="ml-auto">
           <ModeEditOutlineOutlinedIcon className="text-blue-500" />
         </IconButton>
       </div>

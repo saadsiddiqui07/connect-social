@@ -16,12 +16,11 @@ const Messages = () => {
       <div className="sm:hidden">
         <MobileHeader />
       </div>
-      <div className="hidden md:flex shadow-2xl m-3  h-[35rem] justify-center max-w-5xl  ml-auto mr-auto">
+      <div className="md:flex shadow-2xl m-3 h-[35rem] justify-center max-w-5xl  ml-auto mr-auto">
         <ChatSidebar />
         <div className="flex-1 items-center bg-gray-100">
           <div className="flex flex-col mt-[230px]  justify-center items-center">
             <StickyNote2OutlinedIcon className="text-5xl text-blue-600" />
-
             <p className="text-center font-medium  text-gray-600 text-xl ">
               Add a new user or Start a conversation !
             </p>

@@ -49,7 +49,7 @@ const MovieBanner = () => {
             <StarRoundedIcon className="text-yellow-500" />{" "}
           </p>
         </div>
-        <h1 className="w-[400px] md:w-[35rem] leading-5 pt-4 text-base h-20">
+        <h1 className="w-[310px] leading-5 pt-4 text-base h-20 md:w-[35rem]">
           {truncateText(movie?.overview, 150)}
         </h1>
       </div>

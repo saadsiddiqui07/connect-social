@@ -119,7 +119,7 @@ const Post = ({
           <CardMedia
             className="object-contain h-60"
             component="img"
-            height="194"
+            height="190"
             image={image}
             alt="Paella dish"
           />
@@ -146,7 +146,7 @@ const Post = ({
           </IconButton>
           <IconButton onClick={() => setShowCommentInput(!showCommentInput)}>
             <ChatBubbleOutlineIcon />{" "}
-            <p className="text-sm ml-2">
+            <p className="text-xs ml-2">
               {comments.length} {comments.length >= 1 ? "comment" : "comments"}
             </p>
           </IconButton>
@@ -157,7 +157,7 @@ const Post = ({
             <div>
               {comments.map((comment, idx) => (
                 <div key={idx} className="flex items-center px-2">
-                  <p className="text-xs font-extrabold">
+                  <p className="text-xs font-extrabold md:text-sm">
                     {comment.data().username}
                   </p>
                   <span className="ml-3 text-xs md:text-sm">
@@ -171,13 +171,13 @@ const Post = ({
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Leave a comment"
-                className="border-none h-10 pl-3 bg-gray-100 flex-1 focus:ring-0 outline-none"
+                className="border-none h-7 pl-2 bg-gray-100 flex-1 focus:ring-0 outline-none md:h-10"
               />
               <button
                 onClick={commentOnPost}
                 type="submit"
                 disabled={!comment.trim()}
-                className="bg-blue-500 font-mono text-white px-2 ml-3 rounded"
+                className="bg-blue-500 font-mono text-white text-sm px-1 ml-2 rounded"
               >
                 Post
               </button>

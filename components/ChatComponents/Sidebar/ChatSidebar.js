@@ -49,7 +49,7 @@ const ChatSidebar = () => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 h-full w-4/12">
+    <div className="hidden lg:flex flex-col bg-gray-50 h-full w-4/12">
       <Modal className="w-full" open={open} onClose={() => setOpen(false)}>
         <Box sx={style}>
           <h4 className="text-center font-sans">Start a conversation</h4>
