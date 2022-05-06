@@ -26,6 +26,7 @@ const ChatScreen = () => {
   const [roomName, setRoomName] = useState("");
   const [newRoomName, setNewRoomName] = useState("");
   const [roomAdmin, setRoomAdmin] = useState("");
+  const [roomData, setRoomData] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const endOfMessageRef = useRef(null);
   const router = useRouter();
@@ -47,6 +48,9 @@ const ChatScreen = () => {
         // set room name
         setRoomName(snapshot.data().name);
         setRoomAdmin(snapshot.data().createdBy);
+        setRoomData({
+          adminUserName: snapshot.data().username,
+        });
         // fetch messages of a specific chatRoom using roomId
       });
       onSnapshot(
@@ -137,7 +141,7 @@ const ChatScreen = () => {
           )}
         </Box>
       </Modal>
-      <div className="flex items-center px-3 py-2 border-b-2 border-black ">
+      <div className="flex items-center px-3 py-2 border-b-2 border-gray-200 ">
         <Avatar />
         <div className="ml-5">
           <h4 className="font-bold text-sm">{roomName}</h4>
@@ -166,7 +170,7 @@ const ChatScreen = () => {
           </>
         ))}
       </div>
-      <form className="flex items-center border-t-2 border-black p-2">
+      <form className="flex items-center border-t-2  p-2">
         <IconButton className="px-2">
           <SentimentSatisfiedOutlinedIcon fontSize="medium" />
         </IconButton>
@@ -174,7 +178,7 @@ const ChatScreen = () => {
           spellCheck="true"
           autoComplete="on"
           autoFocus
-          className="flex flex-1 outline-none h-10 text-md placeholder-gray-700  border-b-2 border-black"
+          className="flex flex-1 outline-none h-10 text-md placeholder-gray-700"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={`Enter a message:  ${user?.displayName.toLowerCase()}`}
