@@ -43,10 +43,10 @@ const Header = () => {
           className="cursor-pointer"
           onClick={() => router.push("/")}
         />
-        <div className="hidden xl:inline-flex  bg-gray-100 p-2 rounded-xl border-none">
+        <div className="hidden xl:inline-flex w-[70%]  bg-gray-100 p-2 rounded-xl border-none">
           <SearchSharpIcon />
           <input
-            className="bg-transparent w-10/12 text-black text-sm ml-3 border-0 outline-none"
+            className="bg-transparent text-black text-sm ml-3 border-0 outline-none"
             placeholder="Connect with users..."
           />
         </div>
