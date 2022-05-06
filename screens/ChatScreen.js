@@ -40,10 +40,6 @@ const ChatScreen = () => {
     setNewRoomName("");
   };
 
-  const openEditModal = () => {
-    setOpenModal(true);
-  };
-
   // fetch room info with --> roomId
   useEffect(() => {
     if (roomId) {
