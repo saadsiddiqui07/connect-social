@@ -41,6 +41,7 @@ const ChatSidebar = () => {
     await addDoc(collection(db, "chatRooms"), {
       name: input,
       createdBy: user?.email,
+      username: user?.displayName,
       image: user?.photoURL,
       timestamp: serverTimestamp(),
     });
