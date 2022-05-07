@@ -16,10 +16,24 @@ const Cart = ({ setOpen }) => {
   };
 
   return (
-    <div className="md:w-[500px] ">
-      <IconButton onClick={() => setOpen(false)} className="md:hidden">
-        <ArrowBackIcon />
-      </IconButton>
+    <div className="w-full md:w-[500px]">
+      <div className="flex items-center px-2">
+        <IconButton onClick={() => setOpen(false)} className="">
+          <ArrowBackIcon />
+        </IconButton>
+        <p className="ml-4 font-bold text-lg">Cart</p>
+      </div>
+      <div className="flex flex-col items-center">
+        {cart?.map((product) => (
+          <CheckoutProduct
+            key={product.id}
+            id={product.id}
+            {...product}
+            setOpen={setOpen}
+          />
+        ))}
+      </div>
+
       <div className="flex bg-gray-100 flex-col shadow-md items-center">
         <div className="flex w-full justify-between p-2 font-mono text-gray-700 font-bold ">
           <p>
@@ -42,16 +56,6 @@ const Cart = ({ setOpen }) => {
             Empty cart
           </button>
         </div>
-      </div>
-      <div className="flex flex-col items-center">
-        {cart?.map((product) => (
-          <CheckoutProduct
-            key={product.id}
-            id={product.id}
-            {...product}
-            setOpen={setOpen}
-          />
-        ))}
       </div>
     </div>
   );
