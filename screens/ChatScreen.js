@@ -32,6 +32,14 @@ const ChatScreen = () => {
   const router = useRouter();
   const roomId = router.query.id;
 
+  // add scroll animation at the end of the message
+  const ScrollToBottom = () => {
+    endOfMessageRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   // edit new room name
   const handleUpdateRoomName = async () => {
     await updateDoc(doc(db, "chatRooms", roomId), {
@@ -64,14 +72,6 @@ const ChatScreen = () => {
       );
     }
   }, [roomId]);
-
-  // add scroll animation at the end of the message
-  const ScrollToBottom = () => {
-    endOfMessageRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
 
   // send message function
   const sendMessage = async (e) => {
